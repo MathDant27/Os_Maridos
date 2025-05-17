@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Os Maridos - Serviços de Marido de Aluguel</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Custom Tailwind Styles -->
+    <style type="text/tailwindcss">
+        @theme {
+            --color-primary: #3366ff;
+            --color-secondary: #0099cc;
+            --color-accent: #ff9900;
+        }
+        
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased">
+    <!-- Menu de Navegação -->
+    <nav class="bg-blue-600 text-white fixed w-full z-10 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="#" class="flex items-center">
+                <img src="img/logo.png" alt="Os Maridos Logo" class="h-10 mr-3">
+                <span class="text-xl font-bold">Os Maridos</span>
+            </a>
+            
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#servicos" class="hover:text-yellow-300 transition duration-300">Serviços</a>
+                <a href="#sobre" class="hover:text-yellow-300 transition duration-300">Sobre Nós</a>
+                <a href="#projetos" class="hover:text-yellow-300 transition duration-300">Projetos</a>
+                <a href="#contato" class="hover:text-yellow-300 transition duration-300">Contato</a>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="tel:+5511999999999" class="flex items-center">
+                    <i class="fas fa-phone mr-2"></i> (11) 99999-9999
+                </a>
+                <a href="#contato" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md transition duration-300">
+                    Solicitar Orçamento
+                </a>
+            </div>
+            
+            <!-- Botão Mobile -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="md:hidden hidden bg-blue-700 pb-4">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#servicos" class="block py-2 hover:text-yellow-300 transition duration-300">Serviços</a>
+                <a href="#sobre" class="block py-2 hover:text-yellow-300 transition duration-300">Sobre Nós</a>
+                <a href="#projetos" class="block py-2 hover:text-yellow-300 transition duration-300">Projetos</a>
+                <a href="#contato" class="block py-2 hover:text-yellow-300 transition duration-300">Contato</a>
+                <a href="tel:+5511999999999" class="block py-2 flex items-center">
+                    <i class="fas fa-phone mr-2"></i> (11) 99999-9999
+                </a>
+                <a href="#contato" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md transition duration-300 inline-block w-full text-center">
+                    Solicitar Orçamento
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 bg-gradient-to-r from-blue-600 to-blue-400 text-white relative overflow-hidden">
+        <div class="hero-pattern absolute inset-0 opacity-30"></div>
+        <div class="container mx-auto px-4 py-16">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="animate-fadeIn">
+                    <img src="img/logo.png" alt="Os Maridos Logo" class="h-20 mb-6">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Serviços de Marido de Aluguel Profissional</h1>
+                    <p class="text-xl mb-8">Resolvemos qualquer problema da sua casa ou empresa com qualidade, rapidez e segurança.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#servicos" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-md transition duration-300 text-center">
+                            Nossos Serviços
+                        </a>
+                        <a href="#contato" class="bg-white hover:bg-gray-100 text-blue-600 px-6 py-3 rounded-md transition duration-300 text-center">
+                            Fale Conosco
+                        </a>
+                    </div>
+                </div>
+                <div class="animate-fadeIn animation-delay-300">
+                    <div class="bg-white rounded-lg shadow-xl p-8 text-gray-800">
+                        <h3 class="text-2xl font-bold mb-4 text-blue-600">Solicite um orçamento rápido</h3>
+                        <form id="hero-form" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1" for="hero-nome">Nome</label>
+                                <input type="text" id="hero-nome" placeholder="Seu nome" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1" for="hero-telefone">Telefone</label>
+                                <input type="tel" id="hero-telefone" placeholder="(00) 00000-0000" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1" for="hero-servico">Serviço</label>
+                                <select id="hero-servico" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Selecione o serviço</option>
+                                    <option value="eletrica">Elétrica</option>
+                                    <option value="hidraulica">Hidráulica</option>
+                                    <option value="pintura">Pintura</option>
+                                    <option value="montagem">Montagem de Móveis</option>
+                                    <option value="outros">Outros</option>
+                                </select>
+                            </div>
+                            <button type="button" id="hero-submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-md transition duration-300 font-medium">
+                                Solicitar Orçamento
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 relative inline-block">
+                Nossos Serviços
+                <span class="absolute bottom-0 left-0 w-1/3 h-1 bg-yellow-500 -mb-3"></span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Serviço 1 -->
+                <div class="bg-white rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg animate-fadeIn">
+                    <div class="p-6">
+                        <div class="text-4xl text-blue-600 mb-4">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Serviços Elétricos</h3>
+                        <p class="text-gray-600 mb-4">Instalação e manutenção de tomadas, interruptores, luminárias, ventiladores de teto e resolução de problemas elétricos.</p>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="#contato" class="block bg-blue-600 hover:bg-blue-700 text-white text-center py-2 rounded-md transition duration-300">
+                            Solicitar
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Serviço 2 -->
+                <div class="bg-white rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg animate-fadeIn animation-delay-100">
+                    <div class="p-6">
+                        <div class="text-4xl text-blue-600 mb-4">
+                            <i class="fas fa-faucet"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Serviços Hidráulicos</h3>
+                        <p class="text-gray-600 mb-4">Reparos em vazamentos, desentupimentos, instalação de torneiras, chuveiros, válvulas e pequenas reformas.</p>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="#contato" class="block bg-blue-600 hover:bg-blue-700 text-white text-center py-2 rounded-md transition duration-300">
+                            Solicitar
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Serviço 3 -->
+                <div class="bg-white rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg animate-fadeIn animation-delay-200">
+                    <div class="p-6">
+                        <div class="text-4xl text-blue-600 mb-4">
+                            <i class="fas fa-paint-roller"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Pintura</h3>
+                        <p class="text-gray-600 mb-4">Pintura de paredes, tetos, portas e janelas. Reparos em trincas e pequenos buracos nas paredes.</p>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="#contato" class="block bg-blue-600 hover:bg-blue-700 text-white text-center py-2 rounded-md transition duration-300">
+                            Solicitar
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Serviço 4 -->
+                <div class="bg-white rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg animate-fadeIn animation-delay-300">
+                    <div class="p-6">
+                        <div class="text-4xl text-blue-600 mb-4">
+                            <i class="fas fa-couch"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Montagem de Móveis</h3>
+                        <p class="text-gray-600 mb-4">Montagem e desmontagem de móveis, instalação de prateleiras, quadros e TVs na parede.</p>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="#contato" class="block bg-blue-600 hover:bg-blue-700 text-white text-center py-2 rounded-md transition duration-300">
+                            Solicitar
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+                <!-- Serviço 5 -->
+                <div class="bg-white rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg animate-fadeIn">
+                    <div class="p-6">
+                        <div class="text-4xl text-blue-600 mb-4">
+                            <i class="fas fa-door-open"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Serviços de Marcenaria</h3>
+                        <p class="text-gray-600 mb-4">Reparos em portas, janelas, gavetas e móveis de madeira. Instalação de fechaduras e dobradiças.</p>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="#contato" class="block bg-blue-600 hover:bg-blue-700 text-white text-center py-2 rounded-md transition duration-300">
+                            Solicitar
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Serviço 6 -->
+                <div class="bg-white rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg animate-fadeIn animation-delay-100">
+                    <div class="p-6">
+                        <div class="text-4xl text-blue-600 mb-4">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Reparos Gerais</h3>
+                        <p class="text-gray-600 mb-4">Consertos diversos, instalação de acessórios, reparos em pisos e forros, e outras pequenas manutenções.</p>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="#contato" class="block bg-blue-600 hover:bg-blue-700 text-white text-center py-2 rounded-md transition duration-300">
+                            Solicitar
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Serviço 7 -->
+                <div class="bg-white rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg animate-fadeIn animation-delay-200">
+                    <div class="p-6">
+                        <div class="text-4xl text-blue-600 mb-4">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Instalação de Equipamentos</h3>
+                        <p class="text-gray-600 mb-4">Instalação de ar-condicionado, ventiladores, antenas, câmeras de segurança e equipamentos eletrônicos.</p>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="#contato" class="block bg-blue-600 hover:bg-blue-700 text-white text-center py-2 rounded-md transition duration-300">
+                            Solicitar
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Serviço 8 -->
+                <div class="bg-white rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg animate-fadeIn animation-delay-300">
+                    <div class="p-6">
+                        <div class="text-4xl text-blue-600 mb-4">
+                            <i class="fas fa-broom"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Limpeza e Manutenção</h3>
+                        <p class="text-gray-600 mb-4">Limpeza de calhas, jardins, piscinas e áreas externas. Manutenção preventiva residencial.</p>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="#contato" class="block bg-blue-600 hover:bg-blue-700 text-white text-center py-2 rounded-md transition duration-300">
+                            Solicitar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nós -->
+    <section id="sobre" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-fadeIn">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-16 relative inline-block">
+                        Sobre a Os Maridos
+                        <span class="absolute bottom-0 left-0 w-1/3 h-1 bg-yellow-500 -mb-3"></span>
+                    </h2>
+                    <p class="text-gray-600 mb-4">A <strong>Os Maridos</strong> é uma empresa especializada em serviços de manutenção residencial e comercial, oferecendo soluções completas para reparos e instalações.</p>
+                    <p class="text-gray-600 mb-4">Nossa equipe é formada por profissionais qualificados e experientes, prontos para resolver qualquer problema com eficiência e qualidade.</p>
+                    <p class="text-gray-600 mb-8">Trabalhamos com compromisso, pontualidade e transparência, garantindo a satisfação total dos nossos clientes em cada serviço realizado.</p>
+                    
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div class="p-4">
+                            <div class="text-blue-600 font-bold text-3xl flex items-center justify-center">
+                                <i class="fas fa-check mr-2"></i> 500+
+                            </div>
+                            <div class="text-gray-600">Serviços Realizados</div>
+                        </div>
+                        <div class="p-4">
+                            <div class="text-blue-600 font-bold text-3xl flex items-center justify-center">
+                                <i class="fas fa-users mr-2"></i> 300+
+                            </div>
+                            <div class="text-gray-600">Clientes Satisfeitos</div>
+                        </div>
+                        <div class="p-4">
+                            <div class="text-blue-600 font-bold text-3xl flex items-center justify-center">
+                                <i class="fas fa-calendar mr-2"></i> 5+
+                            </div>
+                            <div class="text-gray-600">Anos de Experiência</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="animate-fadeIn animation-delay-300">
+                    <div class="rounded-lg overflow-hidden shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" alt="Equipe Os Maridos" class="w-full h-auto">
+                    </div>
+                    
+                    <div class="mt-8 space-y-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-lg flex items-center text-blue-600">
+                                <i class="fas fa-certificate mr-2"></i> Profissionais Qualificados
+                            </h4>
+                            <p class="text-gray-600">Nossa equipe passa por treinamentos constantes para oferecer o melhor serviço.</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-lg flex items-center text-blue-600">
+                                <i class="fas fa-shield-alt mr-2"></i> Garantia de Serviço
+                            </h4>
+                            <p class="text-gray-600">Oferecemos garantia em todos os serviços realizados.</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-lg flex items-center text-blue-600">
+                                <i class="fas fa-handshake mr-2"></i> Atendimento Personalizado
+                            </h4>
+                            <p class="text-gray-600">Cada cliente recebe atenção especial de acordo com suas necessidades.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Trabalhamos -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 relative inline-block">
+                Como Trabalhamos
+                <span class="absolute bottom-0 left-0 w-1/3 h-1 bg-yellow-500 -mb-3"></span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center animate-fadeIn">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">1. Contato</h3>
+                    <p class="text-gray-600">Entre em contato conosco por telefone, WhatsApp ou formulário.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center animate-fadeIn animation-delay-100">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">2. Orçamento</h3>
+                    <p class="text-gray-600">Receba um orçamento detalhado e sem compromisso.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center animate-fadeIn animation-delay-200">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">3. Agendamento</h3>
+                    <p class="text-gray-600">Escolha a data e horário que melhor se adequam à sua rotina.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center animate-fadeIn animation-delay-300">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">4. Execução</h3>
+                    <p class="text-gray-600">Nossos profissionais realizam o serviço com qualidade e eficiência.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projetos Realizados (Substituindo a seção de depoimentos) -->
+    <section id="projetos" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 relative inline-block">
+                Projetos Realizados
+                <span class="absolute bottom-0 left-0 w-1/3 h-1 bg-yellow-500 -mb-3"></span>
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Projeto 1 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md animate-fadeIn">
+                    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Reforma de Banheiro" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Reforma de Banheiro</h3>
+                        <p class="text-gray-600 mb-4">Reforma completa de banheiro incluindo troca de revestimentos, instalação de louças e metais.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">São Paulo, SP</span>
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">Concluído</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projeto 2 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md animate-fadeIn animation-delay-100">
+                    <img src="https://images.unsplash.com/photo-1565183928294-7063f23ce0f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Instalação Elétrica" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Instalação Elétrica Residencial</h3>
+                        <p class="text-gray-600 mb-4">Revisão completa da parte elétrica de uma residência, incluindo troca de fiação e quadro de distribuição.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">São Paulo, SP</span>
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">Concluído</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projeto 3 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md animate-fadeIn animation-delay-200">
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" alt="Montagem de Móveis" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Montagem de Móveis Planejados</h3>
+                        <p class="text-gray-600 mb-4">Montagem completa de móveis para apartamento novo, incluindo cozinha, quartos e sala.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">São Paulo, SP</span>
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">Concluído</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-blue-400 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="animate-fadeIn">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Precisa de ajuda com reparos ou instalações?</h2>
+                    <p class="text-xl mb-4">Entre em contato conosco agora mesmo e solicite um orçamento sem compromisso. Estamos prontos para resolver seu problema com rapidez e qualidade.</p>
+                </div>
+                <div class="animate-fadeIn animation-delay-200 text-center md:text-right">
+                    <a href="#contato" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-md transition duration-300 text-lg font-medium mb-4">
+                        <i class="fab fa-whatsapp mr-2"></i> Fale pelo WhatsApp
+                    </a>
+                    <p class="text-lg">ou ligue para</p>
+                    <a href="tel:+5511999999999" class="text-2xl font-bold flex items-center justify-center md:justify-end mt-2">
+                        <i class="fas fa-phone mr-2"></i> (11) 99999-9999
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 relative inline-block">
+                Entre em Contato
+                <span class="absolute bottom-0 left-0 w-1/3 h-1 bg-yellow-500 -mb-3"></span>
+            </h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <form id="contact-form" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" for="nome">Nome Completo</label>
+                        <input type="text" id="nome" placeholder="Seu nome" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" for="email">E-mail</label>
+                            <input type="email" id="email" placeholder="seu@email.com" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" placeholder="(00) 00000-0000" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" for="servico">Serviço de Interesse</label>
+                        <select id="servico" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Selecione o serviço</option>
+                            <option value="eletrica">Elétrica</option>
+                            <option value="hidraulica">Hidráulica</option>
+                            <option value="pintura">Pintura</option>
+                            <option value="montagem">Montagem de Móveis</option>
+                            <option value="marcenaria">Marcenaria</option>
+                            <option value="reparos">Reparos Gerais</option>
+                            <option value="instalacao">Instalação de Equipamentos</option>
+                            <option value="limpeza">Limpeza e Manutenção</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" rows="4" placeholder="Descreva o serviço que você precisa..." class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" id="contact-submit" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md transition duration-300 text-lg">
+                            Enviar Mensagem
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <img src="img/logo.png" alt="Os Maridos Logo" class="h-16 mb-4">
+                    <p class="text-gray-400 mb-4">Soluções completas em reparos e manutenção residencial e comercial.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Serviços</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#servicos" class="text-gray-400 hover:text-white transition duration-300">Serviços Elétricos</a></li>
+                        <li><a href="#servicos" class="text-gray-400 hover:text-white transition duration-300">Serviços Hidráulicos</a></li>
+                        <li><a href="#servicos" class="text-gray-400 hover:text-white transition duration-300">Pintura</a></li>
+                        <li><a href="#servicos" class="text-gray-400 hover:text-white transition duration-300">Montagem de Móveis</a></li>
+                        <li><a href="#servicos" class="text-gray-400 hover:text-white transition duration-300">Marcenaria</a></li>
+                        <li><a href="#servicos" class="text-gray-400 hover:text-white transition duration-300">Reparos Gerais</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#sobre" class="text-gray-400 hover:text-white transition duration-300">Sobre Nós</a></li>
+                        <li><a href="#servicos" class="text-gray-400 hover:text-white transition duration-300">Serviços</a></li>
+                        <li><a href="#projetos" class="text-gray-400 hover:text-white transition duration-300">Projetos</a></li>
+                        <li><a href="#contato" class="text-gray-400 hover:text-white transition duration-300">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="border-gray-700 my-8">
+            
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">&copy; 2025 Os Maridos - Todos os direitos reservados.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Política de Privacidade</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Termos de Serviço</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Confirmação -->
+    <div id="confirmation-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full">
+            <div class="text-center">
+                <i class="fas fa-check-circle text-5xl text-green-500 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">Obrigado pelo contato!</h3>
+                <p class="text-gray-600 mb-6">Recebemos sua solicitação e entraremos em contato em breve.</p>
+                <button id="close-modal" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md transition duration-300">
+                    OK
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

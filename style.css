@@ -1,0 +1,112 @@
+/* Estilos personalizados para o site "Os Maridos" */
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeIn {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animation-delay-100 {
+    animation-delay: 0.1s;
+}
+
+.animation-delay-200 {
+    animation-delay: 0.2s;
+}
+
+.animation-delay-300 {
+    animation-delay: 0.3s;
+}
+
+.animation-delay-400 {
+    animation-delay: 0.4s;
+}
+
+/* Estilos para seções */
+section {
+    scroll-margin-top: 80px;
+}
+
+/* Estilos para o menu fixo */
+nav {
+    transition: all 0.3s ease;
+}
+
+/* Estilos para cards de serviço */
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Estilos para botões */
+button, a.bg-blue-600, a.bg-yellow-500 {
+    transition: all 0.3s ease;
+}
+
+button:hover, a.bg-blue-600:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para inputs de formulário */
+input:focus, select:focus, textarea:focus {
+    border-color: #3366ff;
+    box-shadow: 0 0 0 3px rgba(51, 102, 255, 0.2);
+}
+
+/* Estilos para o modal */
+#confirmation-modal {
+    transition: all 0.3s ease;
+}
+
+/* Ajustes para dispositivos móveis */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+}
+
+/* Estilos para links de navegação */
+nav a {
+    position: relative;
+}
+
+nav a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #fcd34d;
+    transition: width 0.3s ease;
+}
+
+nav a:hover:after {
+    width: 100%;
+}
+
+/* Estilos para o scroll suave */
+html {
+    scroll-behavior: smooth;
+}
